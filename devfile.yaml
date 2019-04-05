@@ -5,9 +5,3 @@ projects:
     source:
       type: git
       location: 'https://github.com/ijason/NodeJS-Sample-App.git'
-commands:
-  - name: build
-    actions:
-      - type: exec
-        tool: nodejs-app
-        command: cd ${CHE_PROJECTS_ROOT}/nodejs-mongo-app/EmployeeDB/ && npm install
