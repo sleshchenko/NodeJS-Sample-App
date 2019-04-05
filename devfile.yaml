@@ -5,16 +5,9 @@ projects:
     source:
       type: git
       location: 'https://github.com/ijason/NodeJS-Sample-App.git'
-tools:
-  - name: mongodb
-    type: kubernetes
-    local: mongo-db.yaml
-  - name: nodejs-app
-    type: openshift
-    local: nodejs.yaml
 commands:
-  - name: run
+  - name: build
     actions:
       - type: exec
         tool: nodejs-app
-        command: cd ${CHE_PROJECTS_ROOT}/nodejs-mongo-app/EmployeeDB/ && npm install && sed -i -- ''s/localhost/mongo/g'' app.js && node app.js
+        command: cd ${CHE_PROJECTS_ROOT}/nodejs-mongo-app/EmployeeDB/ && npm install
