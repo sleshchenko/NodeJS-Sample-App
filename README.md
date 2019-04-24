@@ -16,7 +16,7 @@ Employee Database
 
 ## How to build docker image
 
-docker build -t ijason/nodejs-sample .
+docker build -t sleshchenko/nodejs-sample .
 
 ## How to run the application
 

@@ -86,7 +86,7 @@ items:
         name: nodejs-app
       spec:
         containers:
-        - image: "ijason/nodejs-sample:latest"
+        - image: "sleshchenko/nodejs-mongo-sample:latest"
           name: web
           ports:
           - containerPort: 3000
