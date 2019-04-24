@@ -87,7 +87,8 @@ app.post('/employee/:id/edit', function(req, res) {
 
 //delete an employee
 app.post('/employee/:id/delete', function(req, res) {
-	employeeProvider.delete(req.param('_id'), function(error, docs) {
+  console.log(req.param('_id'))
+	employeeProvider.delete(req.param('id'), function(error, docs) {
 		res.redirect('/')
 	});
 });
