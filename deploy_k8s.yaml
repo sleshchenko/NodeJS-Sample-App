@@ -97,8 +97,8 @@ items:
             - name: MONGO_PORT
               value: "27017"
           volumeMounts:
-              - name: projects
-                mountPath: /projects
+            - name: projects
+              mountPath: /projects
         volumes:
           - name: projects
             persistentVolumeClaim:
