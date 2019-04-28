@@ -29,7 +29,10 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-var employeeProvider= new EmployeeProvider('localhost', 27017);
+var mongoHost = process.env.MONGO_HOST || 'localhost';
+var mongoPort = process.env.MONGO_PORT || 27017;
+
+var employeeProvider= new EmployeeProvider(mongoHost, mongoPort);
 
 //Routes
 
@@ -64,7 +67,7 @@ app.post('/employee/new', function(req, res){
 app.get('/employee/:id/edit', function(req, res) {
 	employeeProvider.findById(req.param('_id'), function(error, employee) {
 		res.render('employee_edit',
-		{ 
+		{
 			title: employee.title,
 			employee: employee
 		});
