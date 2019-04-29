@@ -138,7 +138,7 @@ items:
   apiVersion: v1
   kind: PersistentVolumeClaim
   metadata:
-    name: project
+    name: projects
     labels:
       app.kubernetes.io/name: employee-manager
       app.kubernetes.io/component: nodejs-app
