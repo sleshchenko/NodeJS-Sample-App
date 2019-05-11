@@ -6,10 +6,10 @@ items:
   apiVersion: apps/v1
   kind: Deployment
   metadata:
+    name: mongo
     labels:
       app.kubernetes.io/name: employee-manager
       app.kubernetes.io/component: database
-    name: mongo
   spec:
     selector:
       matchLabels:
@@ -23,8 +23,8 @@ items:
         name: mongo
       spec:
         containers:
-        - image: mongo
-          name: mongo
+        - name: mongo
+          image: mongo
           ports:
           - name: mongo
             containerPort: 27017
@@ -43,7 +43,6 @@ items:
     labels:
       app.kubernetes.io/name: employee-manager
       app.kubernetes.io/component: database
-    name: mongo
   spec:
     ports:
       - port: 27017
@@ -69,10 +68,10 @@ items:
   apiVersion: apps/v1
   kind: Deployment
   metadata:
+    name: nodejs-app
     labels:
       app.kubernetes.io/name: employee-manager
       app.kubernetes.io/component: nodejs-app
-    name: nodejs-app
   spec:
     selector:
       matchLabels:
@@ -86,8 +85,8 @@ items:
         name: nodejs-app
       spec:
         containers:
-        - image: "sleshchenko/nodejs-mongo-sample:latest"
-          name: web
+        - name: web-app
+          image: "sleshchenko/nodejs-mongo-sample:latest"
           ports:
           - containerPort: 3000
             name: http-server

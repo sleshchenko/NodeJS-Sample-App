@@ -22,12 +22,12 @@ docker build -t sleshchenko/nodejs-sample .
 
 ### Kubernetes
 ```
-kubectl apply -f k8s.yaml
+kubectl apply -f deploy_k8s.yaml
 ```
 
 ### OpenShift
 ```
-oc apply -f k8s.yaml
+oc apply -f deploy_k8s.yaml
 ```
 
 ## Contact
