@@ -1,0 +1,29 @@
+specVersion: 0.0.1
+name: chectl-generated
+projects:
+  - source:
+      type: git
+      location: 'https://github.com/sleshchenko/NodeJS-Sample-App.git'
+    name: NodeJS-Sample-App.git
+components:
+  - type: kubernetes
+    alias: employee-manager
+    reference: deploy_k8s.yaml
+    entrypoints:
+    - containerName: web-app
+      command: ["tail"]
+      args: ["-f", "/dev/null"]
+  - type: chePlugin
+    alias: typescript-ls
+    id: che-incubator/typescript/1.30.2
+commands:
+  - name: run
+    actions:
+      - type: exec
+        component: employee-manager
+        command: cd ${CHE_PROJECTS_ROOT}/NodeJS-Sample-App.git/EmployeeDB && node app.js
+  - name: stop
+    actions:
+      - type: exec
+        component: employee-manager
+        command: pkill node
