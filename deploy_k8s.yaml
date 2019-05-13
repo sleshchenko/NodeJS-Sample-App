@@ -120,19 +120,6 @@ items:
     selector:
       app.kubernetes.io/name: employee-manager
       app.kubernetes.io/component: nodejs-app
-- apiVersion: v1
-  kind: Route
-  metadata:
-    name: nodejs-web-endpoint
-    labels:
-      app.kubernetes.io/name: employee-manager
-      app.kubernetes.io/component: nodejs-app
-  spec:
-    to:
-      kind: Service
-      name: web
-    port:
-      targetPort: web
 -
   apiVersion: v1
   kind: PersistentVolumeClaim
