@@ -1,5 +1,6 @@
-specVersion: 0.0.1
-name: chectl-generated
+apiVersion: 1.0.0
+metadata:
+  name: nodejs-sample
 projects:
   - source:
       type: git
