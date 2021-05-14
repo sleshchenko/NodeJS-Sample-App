@@ -39,7 +39,7 @@ commands:
   - id: run
     exec:
       component: employee-manager
-      commandLine: cd ${CHE_PROJECTS_ROOT}/NodeJS-Sample-App.git/EmployeeDB && node app.js
+      commandLine: cd ${PROJECTS_SOURCE}/nodejs-sample-app/EmployeeDB && node app.js
   - id: stop
     exec:
       component: employee-manager
