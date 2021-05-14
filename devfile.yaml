@@ -1,30 +1,46 @@
-apiVersion: 1.0.0
+schemaVersion: 2.0.0
 metadata:
   name: nodejs-sample
 projects:
-  - source:
-      type: git
-      location: 'https://github.com/sleshchenko/NodeJS-Sample-App.git'
-    name: NodeJS-Sample-App.git
+  - name: nodejs-sample-app
+    git:
+      remotes:
+        origin: 'https://github.com/sleshchenko/NodeJS-Sample-App.git'
 components:
-  - type: kubernetes
-    alias: employee-manager
-    reference: deploy_k8s.yaml
-    entrypoints:
-    - containerName: web-app
-      command: ["tail"]
-      args: ["-f", "/dev/null"]
-  - type: chePlugin
-    alias: typescript-ls
-    id: che-incubator/typescript/1.30.2
+- name: nodejs
+  container:
+    image: "sleshchenko/nodejs-mongo-sample:latest"
+    endpoints:
+      - exposure: public
+        name: http-server
+        protocol: http
+        targetPort: 3000
+    env:
+      - name: MONGO_HOST
+        value: "mongo"
+      - name: MONGO_PORT
+        value: "27017"
+    mountSources: true
+- name: mongo-db
+  container:
+    image: mongo
+    endpoints:
+      - exposure: internal
+        name: mongo
+        protocol: tcp
+        targetPort: 27017
+    volumeMounts:
+    - name: db-storage
+      path: /data/db
+- name: db-storage
+  volume:
+    size: 1Gi
 commands:
-  - name: run
-    actions:
-      - type: exec
-        component: employee-manager
-        command: cd ${CHE_PROJECTS_ROOT}/NodeJS-Sample-App.git/EmployeeDB && node app.js
-  - name: stop
-    actions:
-      - type: exec
-        component: employee-manager
-        command: pkill node
+  - id: run
+    exec:
+      component: employee-manager
+      commandLine: cd ${CHE_PROJECTS_ROOT}/NodeJS-Sample-App.git/EmployeeDB && node app.js
+  - id: stop
+    exec:
+      component: employee-manager
+      commandLine: pkill node

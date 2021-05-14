@@ -16,7 +16,7 @@ Employee Database
 
 ## How to build docker image
 
-docker build -t sleshchenko/nodejs-sample .
+docker build -t quay.io/sleshche/employee-manager .
 
 ## How to run the application
 
