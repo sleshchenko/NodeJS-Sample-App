@@ -16,7 +16,7 @@ Employee Database
 
 ## How to build docker image
 
-docker build -t quay.io/sleshche/employee-manager .
+docker build -t quay.io/sleshche/employee-manager:latest .
 
 ## How to run the application
 

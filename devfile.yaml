@@ -17,7 +17,7 @@ components:
         targetPort: 3000
     env:
       - name: MONGO_HOST
-        value: "mongo"
+        value: "localhost"
       - name: MONGO_PORT
         value: "27017"
     mountSources: true
@@ -25,7 +25,7 @@ components:
   container:
     image: mongo
     endpoints:
-      - exposure: internal
+      - exposure: none
         name: mongo
         protocol: tcp
         targetPort: 27017
