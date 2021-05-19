@@ -16,7 +16,7 @@ components:
       args: ["-f", "/dev/null"]
   - type: chePlugin
     alias: typescript-ls
-    id: che-incubator/typescript/1.30.2
+    id: vscode/typescript-language-features/latest
 commands:
   - name: run
     actions:
